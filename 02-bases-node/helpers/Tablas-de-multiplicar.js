@@ -1,25 +1,29 @@
-const fs = require('fs'); 
+const fs = require('fs');
 
-const CriarTabuada = async (base = 5) => {
+const CriarTabuada = async (base = 5, listar = false ) => {
 
     try {
-        
-    console.log('=================')
-    console.log('Tabla del:', base )
-    console.log('=================')
-    let saida = '';
 
-    for (let i = 1; i <= 10; i++) {
-        saida += `${base} X ${i} = ${base * i}\n`
-    }
+        let saida = '';
 
-    console.log(saida)
+        for (let i = 1; i <= 10; i++) {
+            saida += `${base} X ${i} = ${base * i}\n`
+        }
 
-    fs.writeFileSync(`tabla-${ base }.txt`, saida);
-    
-    return `tabla-${base}.txt creada`
-        
-    } catch (error) {
+        if (listar){
+            console.log('=================')
+            console.log('Tabla del:', base)
+            console.log('=================')
+            console.log(saida)
+
+        }
+
+         
+        fs.writeFileSync(`tabla-${base}.txt`, saida);
+
+        return `tabla-${base}.txt creada`
+
+    } catch (err) {
         throw (err);
     }
 
