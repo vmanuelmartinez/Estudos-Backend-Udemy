@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const CriarTabuada = async (base = 5, listar = false ) => {
+const CriarTabuada = async (base = 5, listar = false, ate = 10 ) => {
 
     try {
 
         let saida = '';
 
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= ate; i++) {
             saida += `${base} X ${i} = ${base * i}\n`
         }
 
@@ -18,8 +18,8 @@ const CriarTabuada = async (base = 5, listar = false ) => {
 
         }
 
-         
-        fs.writeFileSync(`tabla-${base}.txt`, saida);
+        
+        fs.writeFileSync(`./salidas/Tablas-de-multiplicar.js.${base}.txt`, saida);
 
         return `tabla-${base}.txt creada`
 
